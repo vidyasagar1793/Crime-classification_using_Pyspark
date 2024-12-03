@@ -1,25 +1,48 @@
-# Crime-classification_using_Pyspark
+# Crime Classification System using PySpark
 
+## Overview
+This project develops an automated crime classification system to categorize crime descriptions into 39 predefined categories. Using the **San Francisco Crime Dataset** from Kaggle, the system leverages PySpark for efficient data processing and machine learning model training. The final model assists law enforcement by enabling resource allocation based on the nature of the crime.
 
-**Project Title:** San Francisco Crime Classification using PySpark
+---
 
-**Project Description:**
-In the era of data-driven decision-making, law enforcement agencies increasingly rely on data analysis to combat crime effectively. The San Francisco Crime Classification project leverages the power of PySpark, a Python library for working with packet capture files, to analyze network traffic data and classify cybercrimes in the San Francisco area.
+## Features
+- **Preprocessing:**
+  - Tokenization using `RegexTokenizer`.
+  - Stopword removal using `StopWordsRemover`.
+  - Feature extraction via `CountVectorizer`, `TF-IDF`, and `Word2Vec`.
 
-**Objective:**
+- **Modeling:**
+  - Supervised machine learning models: Logistic Regression and Naive Bayes.
+  - Multi-class text classification with 39 predefined categories.
 
-The primary goal of this project is to develop a robust and accurate system that can automatically classify different types of cybercrimes based on a given description. By doing so, law enforcement agencies can respond promptly to cyber threats and take appropriate actions to mitigate criminal activities.
+- **Performance:**
+  - Achieved 99.5% accuracy using Naive Bayes with TF-IDF features.
+  - Comparison of feature extraction techniques: CountVectorizer, TF-IDF, Word2Vec.
 
-**Key Components:**
+---
 
-1. **Data Collection:** The project starts with the collection of network packet capture data from various sources in the San Francisco area. This data will include information about network traffic, such as IP addresses, ports, protocols, and packet payloads.
+## Dataset
+- **Source:** [Kaggle San Francisco Crime Dataset](https://www.kaggle.com/c/sf-crime).
+- **Data Description:** The dataset contains crime descriptions, their categories, and additional metadata.
 
-2. **Data Preprocessing:** PyShark will preprocess the raw packet capture data. This involves extracting relevant features and cleaning the data for analysis.
+---
 
-3. **Feature Engineering:** Feature engineering is critical in building a classification model. Relevant features from the packet data will be selected and transformed to create a feature set suitable for machine learning.
+## Preprocessing Steps
+1. **Tokenization:** Used `RegexTokenizer` to split crime descriptions into tokens based on a regex pattern.
+2. **Stopword Removal:** Removed common words (e.g., "the", "and") using `StopWordsRemover`.
+3. **Feature Extraction:**
+   - `CountVectorizer`: Generates a sparse representation of word counts.
+   - `TF-IDF`: Calculates term frequency-inverse document frequency scores.
+   - `Word2Vec`: Captures word semantics as dense vectors.
+4. **Category Encoding:** Encoded crime categories as numeric labels using `StringIndexer`.
 
-4. **Machine Learning Model:** A machine learning model, such as a deep neural network or a random forest classifier, will be trained using the preprocessed data. The model will learn to classify network traffic into different categories of cybercrimes, such as DDoS attacks, malware infections, or phishing attempts.
+---
 
-5. **Evaluation and Validation:** The performance of the classification model will be evaluated using various metrics like accuracy, precision, recall, and F1-score. Cross-validation techniques will be employed to ensure the model's robustness.
+## Model Building and Evaluation
+1. **Baseline Model:**
+   - Logistic Regression with `CountVectorizer` features (Accuracy: 97.2%).
 
-dataset---->https://www.kaggle.com/competitions/sf-crime/data?select=train.csv.zip
+2. **Advanced Models:**
+   - Naive Bayes with `CountVectorizer` (Accuracy: 99.3%).
+   - Naive Bayes with `TF-IDF` (Accuracy: 99.5%).
+   - Logistic Regression and Word2Vec (Accuracy: 90.7%).
